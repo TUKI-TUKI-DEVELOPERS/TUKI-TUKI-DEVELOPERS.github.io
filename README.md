@@ -45,24 +45,6 @@ npm run dev           # http://localhost:4321
 npm run build         # genera HTML/CSS/JS estático en ./dist
 ```
 
-🚀 Publicar en GitHub Pages (rama gh-pages)
-
-    El script ya crea .nojekyll y sube dot-files, de modo que GitHub Pages
-    sirve la carpeta _astro/.
-
-    Ajusta/añade este script en package.json (una sola vez):
-
-"scripts": {
-  "dev":    "astro dev",
-  "build":  "astro build",
-  "preview":"astro preview",
-  "deploy": "npm run build && touch dist/.nojekyll && npx gh-pages -d dist --dotfiles"
-}
-
-```bash
-npm install -D gh-pages     # si no lo tienes
-```
-
 Publica:
 
 ```bash

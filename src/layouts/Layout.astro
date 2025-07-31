@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+
+const {
+  title       = 'Tuki Tuki Portafolio',
+  description = 'Portafolio de Tuki Tuki Solutions: desarrollo de software a medida, e-commerce, sistemas de gestión y más.'
+} = Astro.props;
+---
+
+<script>
+  /* Animación de aparición al hacer scroll */
+  if (typeof window !== 'undefined') {
+    const reveal = () => {
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        if (el.getBoundingClientRect().top < innerHeight - 80) {
+          el.classList.add('fade-in-up');
+          el.removeAttribute('data-animate');
+        }
+      });
+    };
+    addEventListener('scroll', reveal);
+    addEventListener('load',   reveal);
+  }
+</script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- ↓ Nuevo favicon -->
+  <link rel="icon" type="image/x-icon" href="/logo.ico" />
+
+  <!-- ↓ Meta description para SEO / previews -->
+  <meta name="description" content={description} />
+
+  <title>{title}</title>
+</head>
+<body class="min-h-screen flex flex-col">
+  <slot name="nav" />
+  <main class="flex-1">
+    <slot />
+  </main>
+  <slot name="footer" />
+</body>
+</html>

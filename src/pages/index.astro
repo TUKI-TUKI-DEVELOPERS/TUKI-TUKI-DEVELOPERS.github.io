@@ -1,0 +1,43 @@
+---
+import Layout        from "../layouts/Layout.astro";
+import Navbar        from "../components/Navbar.astro";
+import Footer        from "../components/Footer.astro";
+import Hero          from "../components/Hero.astro";
+import TikTendry     from "../components/TikTendry.astro";
+import EcommerceCard from "../components/EcommerceCard.astro";
+import projects      from "../data/ecommerce.js";
+---
+<Layout title="Tuki Tuki Portafolio">
+  <Fragment slot="nav"><Navbar /></Fragment>
+
+  <Hero />
+
+  <div class="hr-line"></div>
+
+  <TikTendry />
+
+  <div class="hr-line"></div>
+
+  <section id="ecommerce" class="section">
+    <h2 class="section-title" data-animate>E-commerce</h2>
+
+    <div class="flex flex-wrap justify-center gap-12 max-w-6xl mx-auto">
+      {projects.map(p => <EcommerceCard project={p} />)}
+    </div>
+  </section>
+
+  <div class="hr-line"></div>
+
+  <section id="contacto" class="section text-center">
+    <h2 class="section-title" data-animate>¿Hablamos?</h2>
+    <p data-animate>
+      Escríbenos a&nbsp;
+      <a href="mailto:contacto@tukituki.dev"
+         class="underline hover:text-[var(--brand-accent)]">
+        contacto@tukituki.dev
+      </a>
+    </p>
+  </section>
+
+  <Fragment slot="footer"><Footer /></Fragment>
+</Layout>

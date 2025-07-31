@@ -1,46 +1,70 @@
-# Astro Starter Kit: Basics
+# Tuki Tuki Portafolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Sitio estático construido con **[Astro](https://astro.build)** + **Tailwind CSS**  
+Publicado en GitHub Pages: <https://tuki-tuki-developers.github.io/>
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 📁 Estructura mínima
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── public/ # Imágenes, favicon, etc.
+├── src/ # Código fuente Astro
+│ ├── components/
+│ ├── layouts/
+│ ├── pages/
+│ └── styles/
+├── astro.config.mjs # Config Astro (base = '/')
+├── tailwind.config.js
+├── package.json
+└── README.md
+
+
+---
+
+## ⚙️ Primer uso
+
+```bash
+# clona el repo
+git clone https://github.com/TUKI-TUKI-DEVELOPERS/tuki-tuki-developers.github.io.git
+cd tuki-tuki-developers.github.io
+
+# instala dependencias
+npm install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Servidor de desarrollo
 
-## 🧞 Commands
+```bash
+npm run dev           # http://localhost:4321
+```
 
-All commands are run from the root of the project, from a terminal:
+🏗️ Compilar para producción
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm run build         # genera HTML/CSS/JS estático en ./dist
+```
 
-## 👀 Want to learn more?
+🚀 Publicar en GitHub Pages (rama gh-pages)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+    El script ya crea .nojekyll y sube dot-files, de modo que GitHub Pages
+    sirve la carpeta _astro/.
+
+    Ajusta/añade este script en package.json (una sola vez):
+
+"scripts": {
+  "dev":    "astro dev",
+  "build":  "astro build",
+  "preview":"astro preview",
+  "deploy": "npm run build && touch dist/.nojekyll && npx gh-pages -d dist --dotfiles"
+}
+
+```bash
+npm install -D gh-pages     # si no lo tienes
+```
+
+Publica:
+
+```bash
+npm run deploy              # compila y empuja dist/ a gh-pages
+```
